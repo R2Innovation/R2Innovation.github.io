@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software - R² Innovative Software</title>
+    <link rel="icon" href="logo.png">
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* Light theme variables */
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #0ea5e9;
+            --bg-color: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text-color: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --header-height: 70px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+        
+        /* Dark theme variables */
+        .dark-theme {
+            --primary-color: #3b82f6;
+            --primary-dark: #60a5fa;
+            --secondary-color: #0ea5e9;
+            --bg-color: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-color: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: var(--transition);
+        }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+        }
+        
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background-color: var(--bg-color);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            transition: var(--transition);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .logo > img {
+            width: 64px;
+            height: 64px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .org-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--text-color);
+            line-height: 1.2;
+        }
+        
+        .org-tagline {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        /* Navigation Styles */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 24px;
+        }
+        
+        nav a {
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Header Controls (Search and Theme) */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .search-container {
+            position: relative;
+        }
+        
+        .search-input {
+            padding: 8px 16px 8px 40px;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            width: 200px;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            width: 240px;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            pointer-events: none;
+        }
+        
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            background-color: var(--bg-secondary);
+            transition: var(--transition);
+        }
+        
+        .theme-toggle:hover {
+            background-color: var(--border-color);
+        }
+        
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .theme-toggle .sun-icon {
+            display: none;
+        }
+        
+        .dark-theme .theme-toggle .sun-icon {
+            display: block;
+        }
+        
+        .dark-theme .theme-toggle .moon-icon {
+            display: none;
+        }
+        
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: var(--text-color);
+            transition: var(--transition);
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: calc(var(--header-height) + 20px);
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 20px;
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius);
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            color: var(--text-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .page-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 24px auto 0;
+            color: var(--text-secondary);
+        }
+        
+        /* Software Grid */
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .software-card {
+            background-color: var(--bg-color);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .software-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .software-header {
+            padding: 30px 30px 20px;
+            background-color: var(--bg-secondary);
+            text-align: center;
+        }
+        
+        .software-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 32px;
+            margin: 0 auto 20px;
+        }
+        
+        .software-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        
+        .software-version {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .software-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .software-body {
+            padding: 0 30px 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .software-features {
+            margin: 20px 0;
+            flex-grow: 1;
+        }
+        
+        .software-features h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .software-features h3::before {
+            content: '✨';
+            font-size: 1.2rem;
+        }
+        
+        .features-list {
+            list-style-type: none;
+        }
+        
+        .features-list li {
+            margin-bottom: 10px;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+        
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .software-actions {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 24px;
+            text-align: center;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Quick Info Section */
+        .quick-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .info-card {
+            background-color: var(--bg-secondary);
+            padding: 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .info-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        
+        .info-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        /* Download Stats */
+        .stats-section {
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            background-color: var(--bg-secondary);
+            padding: 25px 15px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .footer-quote {
+            font-style: italic;
+            margin-top: 10px;
+            color: var(--primary-color);
+        }
+        
+        /* Search Results */
+        .search-highlight {
+            background-color: rgba(255, 255, 0, 0.3);
+            padding: 2px;
+            border-radius: 2px;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+            display: none;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            nav {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-color);
+                box-shadow: var(--shadow);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            nav li {
+                width: 100%;
+            }
+            
+            nav a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .header-controls {
+                margin-left: auto;
+                margin-right: 12px;
+            }
+            
+            .search-input {
+                width: 160px;
+            }
+            
+            .search-input:focus {
+                width: 180px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .software-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .software-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .search-input {
+                display: none;
+            }
+            
+            .search-container.active .search-input {
+                display: block;
+                position: absolute;
+                top: 50px;
+                right: 0;
+                width: 280px;
+            }
+            
+            .page-header {
+                padding: 30px 20px;
+            }
+            
+            .software-header,
+            .software-body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo"><img src="logo.png" alt="R² Innovative Software Logo" title="Logo"></div>
+                <div class="logo-text">
+                    <div class="org-name">R² Innovative Software</div>
+                    <div class="org-tagline">Where Innovation is the Key to Success</div>
+                </div>
+            </div>
+            
+            <!-- Navigation -->
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#" class="active">Software</a></li>
+                    <li><a href="index.html#mission">Mission</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#license">License</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Header Controls -->
+            <div class="header-controls">
+                <!-- Search -->
+                <div class="search-container" id="search-container">
+                    <div class="search-icon">🔍</div>
+                    <input type="text" class="search-input" id="search-input" placeholder="Search software...">
+                </div>
+                
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <svg class="moon-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg class="sun-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <h1>Our Software</h1>
+            <p>Explore our collection of powerful, open-source software solutions. All projects are released under the GNU General Public License v3.0, ensuring software freedom for all users.</p>
+        </section>
+        
+        <!-- Quick Info -->
+        <div class="quick-info">
+            <div class="info-card">
+                <h3>📦 All Software</h3>
+                <p>Every application is 100% free and open-source</p>
+            </div>
+            <div class="info-card">
+                <h3>⚙️ Cross-Platform</h3>
+                <p>Available for multiple operating systems</p>
+            </div>
+            <div class="info-card">
+                <h3>🔓 No Restrictions</h3>
+                <p>No artificial limitations or paywalls</p>
+            </div>
+            <div class="info-card">
+                <h3>🔄 Actively Maintained</h3>
+                <p>Regular updates and security patches</p>
+            </div>
+        </div>
+        
+        <!-- Software Grid -->
+        <div class="software-grid" id="software-grid">
+            <!-- QuantilyxDoc -->
+            <div class="software-card" data-searchable="QuantilyxDoc document editor PDF editing OCR conversion open-source GPLv3 Linux">
+                <div class="software-header">
+                    <div class="software-logo">QD</div>
+                    <h2 class="software-title">QuantilyxDoc</h2>
+                    <span class="software-version">v1.0</span>
+                    <p class="software-description">Professional open-source document editor for Linux with PDF editing, OCR, format conversion, and document liberation tools.</p>
+                </div>
+                <div class="software-body">
+                    <div class="software-features">
+                        <h3>Key Features</h3>
+                        <ul class="features-list">
+                            <li>Universal document support (PDF, EPUB, DjVu, etc.)</li>
+                            <li>Advanced PDF editing and annotation tools</li>
+                            <li>Dual OCR engine with 50+ language support</li>
+                            <li>Document liberation - remove restrictions</li>
+                            <li>Batch processing and automation</li>
+                            <li>Form creation and digital signatures</li>
+                        </ul>
+                    </div>
+                    <div class="software-actions">
+                        <a href="https://github.com/R-Square-Innovative-Software/QuantilyxDoc" class="btn btn-primary" target="_blank">View on GitHub</a>
+                        <a href="#" class="btn btn-secondary">View Documentation</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- HEIC Converter -->
+            <div class="software-card" data-searchable="HEIC Converter image conversion HEIC HEIF JPEG PNG batch processing">
+                <div class="software-header">
+                    <div class="software-logo">HC</div>
+                    <h2 class="software-title">HEIC/HEIF Converter</h2>
+                    <span class="software-version">v1.2</span>
+                    <p class="software-description">A command-line tool for converting HEIC/HEIF image files to other common formats with embedded codecs and batch processing.</p>
+                </div>
+                <div class="software-body">
+                    <div class="software-features">
+                        <h3>Key Features</h3>
+                        <ul class="features-list">
+                            <li>Embedded HEIC/HEIF codecs included</li>
+                            <li>Multiple output formats (JPEG, PNG, BMP, TIFF, WebP)</li>
+                            <li>Batch processing of entire directories</li>
+                            <li>Parallel processing for improved performance</li>
+                            <li>Preserve metadata and EXIF data</li>
+                            <li>Cross-platform with Debian 9/12/13 support</li>
+                        </ul>
+                    </div>
+                    <div class="software-actions">
+                        <a href="https://github.com/R-Square-Innovative-Software/heic_converter" class="btn btn-primary" target="_blank">View on GitHub</a>
+                        <a href="#" class="btn btn-secondary">View Documentation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Download Stats -->
+        <div class="stats-section">
+            <h2>Project Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">Active Projects</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">GPLv3</span>
+                    <span class="stat-label">License</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Supported Formats</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Open Source</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- No Search Results Message -->
+        <div class="no-results" id="no-results">
+            <p>No software found matching your search. Try different keywords.</p>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 R² Innovative Software | Free Software for a Free World</p>
+        <p class="footer-quote">"Where innovation is the key to success"</p>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        
+        // Check for saved theme or prefer-color-scheme
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const savedTheme = localStorage.getItem('theme');
+        
+        // Set initial theme
+        if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+            body.classList.remove('light-theme');
+            body.classList.add('dark-theme');
+        } else {
+            body.classList.remove('dark-theme');
+            body.classList.add('light-theme');
+        }
+        
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-theme')) {
+                body.classList.remove('dark-theme');
+                body.classList.add('light-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.remove('light-theme');
+                body.classList.add('dark-theme');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            
+            // Animate hamburger to X
+            const spans = mobileMenuToggle.querySelectorAll('span');
+            if (mainNav.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!mainNav.contains(event.target) && 
+                !mobileMenuToggle.contains(event.target) && 
+                mainNav.classList.contains('active')) {
+                mainNav.classList.remove('active');
+                
+                // Reset hamburger
+                const spans = mobileMenuToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+        
+        // Search Functionality
+        const searchInput = document.getElementById('search-input');
+        const searchContainer = document.getElementById('search-container');
+        const noResults = document.getElementById('no-results');
+        
+        // Show search on mobile when clicking search icon
+        if (window.innerWidth <= 480) {
+            const searchIcon = document.querySelector('.search-icon');
+            searchIcon.addEventListener('click', () => {
+                searchContainer.classList.toggle('active');
+                if (searchContainer.classList.contains('active')) {
+                    searchInput.focus();
+                }
+            });
+        }
+        
+        // Search function
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.trim().toLowerCase();
+            
+            // If search is empty, reset everything
+            if (searchTerm === '') {
+                resetSearch();
+                return;
+            }
+            
+            let foundResults = false;
+            
+            // Search in software cards
+            const softwareCards = document.querySelectorAll('.software-card');
+            softwareCards.forEach(card => {
+                const searchableText = card.getAttribute('data-searchable').toLowerCase();
+                const cardText = card.textContent.toLowerCase();
+                
+                if (searchableText.includes(searchTerm) || cardText.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                    highlightText(card, searchTerm);
+                    foundResults = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Show no results message if needed
+            if (foundResults) {
+                noResults.style.display = 'none';
+            } else {
+                noResults.style.display = 'block';
+            }
+        });
+        
+        // Function to reset search highlights and show all elements
+        function resetSearch() {
+            // Remove all highlights
+            const highlights = document.querySelectorAll('.search-highlight');
+            highlights.forEach(highlight => {
+                const parent = highlight.parentNode;
+                parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
+                parent.normalize();
+            });
+            
+            // Show all software cards
+            const softwareCards = document.querySelectorAll('.software-card');
+            softwareCards.forEach(card => {
+                card.style.display = 'flex';
+            });
+            
+            // Hide no results message
+            noResults.style.display = 'none';
+        }
+        
+        // Function to highlight search terms in an element
+        function highlightText(element, searchTerm) {
+            const textNodes = getTextNodes(element);
+            
+            textNodes.forEach(node => {
+                const nodeText = node.textContent;
+                const regex = new RegExp(`(${searchTerm})`, 'gi');
+                const newText = nodeText.replace(regex, '<span class="search-highlight">$1</span>');
+                
+                if (newText !== nodeText) {
+                    const newSpan = document.createElement('span');
+                    newSpan.innerHTML = newText;
+                    node.parentNode.replaceChild(newSpan, node);
+                }
+            });
+        }
+        
+        // Function to get all text nodes in an element
+        function getTextNodes(element) {
+            const textNodes = [];
+            
+            function findTextNodes(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    textNodes.push(node);
+                } else {
+                    for (let child of node.childNodes) {
+                        findTextNodes(child);
+                    }
+                }
+            }
+            
+            findTextNodes(element);
+            return textNodes;
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        const spans = mobileMenuToggle.querySelectorAll('span');
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                    
+                    // Scroll to target
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Update year in footer
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearSpan = document.querySelector('footer p');
+            if (yearSpan) {
+                yearSpan.innerHTML = yearSpan.innerHTML.replace('2026', new Date().getFullYear());
+            }
+        });
+    </script>
+</body>
+</html>
