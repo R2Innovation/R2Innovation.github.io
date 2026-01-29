@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEIC/HEIF Converter - R² Innovative Software</title>
+    <link rel="icon" href="../../resources/logo.png">
+    <link rel='stylesheet' type='text/css' href='../../resources/css/main.css'/>
+    <link rel="shortcut icon" id="shortcutIcon" href="../../resources/logo.png" type="image/png" />
+    <style>
+        .tab:hover,
+                #overview:target ~ .tabs .tab[href="#overview"],
+                #features:target ~ .tabs .tab[href="#features"],
+                #installation:target ~ .tabs .tab[href="#installation"],
+                #usage:target ~ .tabs .tab[href="#usage"],
+                #documentation:target ~ .tabs .tab[href="#documentation"] {
+                    border-left-color: var(--primary-color);
+                    border-bottom-color: var(--border-color);
+        }
+        
+        /* Show active tab when radio button is checked */
+        #tab-overview:checked ~ div.tabs > .tab-overview,
+        #tab-features:checked ~ div.tabs > .tab-features,
+        #tab-installation:checked ~ div.tabs > .tab-installation,
+        #tab-usage:checked ~ div.tabs > .tab-usage,
+        #tab-documentation:checked ~ div.tabs > .tab-documentation {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        
+        /* Show content when corresponding radio is checked */
+        #tab-overview:checked ~ #tab-panel-overview,
+        #tab-features:checked ~ #tab-panel-features,
+        #tab-installation:checked ~ #tab-panel-installation,
+        #tab-usage:checked ~ #tab-panel-usage,
+        #tab-documentation:checked ~ #tab-panel-documentation {
+            display: block;
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo"><img src="../../resources/logo.png" alt="R² Innovative Software Logo" title="Logo"></div>
+                <div class="logo-text">
+                    <div class="org-name">R² Innovative Software</div>
+                    <div class="org-tagline">Where Innovation is the Key to Success</div>
+                </div>
+            </div>
+            
+            <!-- Navigation -->
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../">Software & Projects</a></li>
+                    <li><a href="../../mission.html">Mission</a></li>
+                    <li><a href="../../index.html#license">License</a></li>
+                    <li><a href="../../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Header Controls -->
+            <div class="header-controls">
+                <!-- Search -->
+                <div class="search-container" id="search-container">
+                    <div class="search-icon">🔍</div>
+                    <input type="text" class="search-input" id="search-input" placeholder="Search...">
+                </div>
+                
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <svg class="moon-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg class="sun-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Software Hero -->
+        <section class="software-hero">
+            <div class="software-icon">
+                <div class="software-icon-large">HC</div>
+            </div>
+            <div class="software-info">
+                <h1 class="software-title">HEIC/HEIF Converter</h1>
+                <div class="software-version">v1.2</div>
+                <p class="software-subtitle">Effortless HEIC/HEIF Image Conversion</p>
+                <p class="software-description">
+                    A command-line tool for converting HEIC/HEIF image files to other common image formats (JPEG, PNG, BMP, TIFF, WebP). 
+                    The converter includes embedded HEIC/HEIF codecs, eliminating the need for system-wide codec installation.
+                </p>
+                <div class="software-actions">
+                    <a href="https://github.com/R2Innovation/heic_converter" class="btn btn-primary" target="_blank">View on GitHub</a>
+                    <a href="#download" class="btn btn-secondary">Download</a>
+                    <a href="#usage" class="btn btn-outline">Quick Start Guide</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pure CSS Tabs with Radio Buttons -->
+        <div class="tab-container">
+            <!-- Tab Navigation with Radio Buttons -->
+            <input class="tab-input" type="radio" id="tab-overview" name="tab-group" checked>
+            <input class="tab-input" type="radio" id="tab-features" name="tab-group">
+            <input class="tab-input" type="radio" id="tab-installation" name="tab-group">
+            <input class="tab-input" type="radio" id="tab-usage" name="tab-group">
+            <input class="tab-input" type="radio" id="tab-documentation" name="tab-group">
+            
+            <div class="tabs">
+                <label class="tab-label tab-overview" for="tab-overview">Overview</label>
+                <label class="tab-label tab-features" for="tab-features">Features</label>
+                <label class="tab-label tab-installation" for="tab-installation">Installation</label>
+                <label class="tab-label tab-usage" for="tab-usage">Usage</label>
+                <label class="tab-label tab-documentation" for="tab-documentation">Documentation</label>
+            </div>
+            
+            <!-- Tab Panels -->
+            <!-- Overview Tab -->
+            <div class="tab-panel" id="tab-panel-overview">
+                <section>
+                    <h2>Overview</h2>
+                    <p>
+                        HEIC/HEIF Converter is a lightweight, efficient tool for converting Apple's HEIC/HEIF image format to more widely compatible formats like JPEG and PNG. 
+                        Perfect for users transitioning between ecosystems or needing to share images across platforms.
+                    </p>
+                    
+                    <div class="info-box">
+                        <strong>Author:</strong> R Square Innovation Software<br>
+                        <strong>Version:</strong> v1.2<br>
+                        <strong>License:</strong> GPLv3 (See LICENSE file)
+                    </div>
+                    
+                    <h3>Why Choose HEIC/HEIF Converter?</h3>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <h4 class="feature-title"><span class="feature-icon">🔧</span>Embedded Codecs</h4>
+                            <p>No need to install system-wide codecs. Everything you need is included in the application.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="feature-title"><span class="feature-icon">⚡</span>Fast Processing</h4>
+                            <p>Multi-threaded conversion for batch processing with minimal resource usage.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="feature-title"><span class="feature-icon">🔄</span>Cross-Platform</h4>
+                            <p>Separate builds for Debian 9 and Debian 12/13 with full compatibility.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Features Tab -->
+            <div class="tab-panel" id="tab-panel-features">
+                <section>
+                    <h2>Features</h2>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <h4 class="feature-title"><span class="feature-icon">📁</span>Embedded Codecs</h4>
+                            <p>HEIC/HEIF codecs included if the system does not have them installed.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="feature-title"><span class="feature-icon">🖼️</span>Multiple Output Formats</h4>
+                            <p>Convert to JPEG, PNG, BMP, TIFF, or WebP with adjustable quality settings.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="feature-title"><span class="feature-icon">📦</span>Batch Processing</h4>
+                            <p>Convert entire directories of images with recursive directory processing.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="feature-title"><span class="feature-icon">⚡</span>Parallel Processing</h4>
+                            <p>Multi-threaded conversion for improved performance on modern hardware.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="feature-title"><span class="feature-icon">🏷️</span>Preserve Metadata</h4>
+                            <p>Option to keep or strip EXIF data and color profiles from images.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="feature-title"><span class="feature-icon">💻</span>Cross-Platform</h4>
+                            <p>Separate optimized builds for Debian 9 and Debian 12/13 systems.</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Supported Formats</h3>
+                    <div class="formats-grid">
+                        <div class="format-card">
+                            <h4 class="format-title">Input Formats</h4>
+                            <p class="format-extensions">.heic, .HEIC<br>.heif, .HEIF</p>
+                        </div>
+                        <div class="format-card">
+                            <h4 class="format-title">Output Formats</h4>
+                            <p class="format-extensions">.jpg, .jpeg<br>.png<br>.bmp<br>.tiff, .tif<br>.webp</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Installation Tab -->
+            <div class="tab-panel" id="tab-panel-installation">
+                <section>
+                    <h2 id="download">Installation</h2>
+                    
+                    <h3>System Requirements</h3>
+                    
+                    <h4>Debian 9 (Stretch)</h4>
+                    <ul>
+                        <li>GCC 6.3 or higher</li>
+                        <li>CMake 3.7 or higher</li>
+                        <li>Standard C++17 development libraries</li>
+                    </ul>
+                    
+                    <h4>Debian 12/13 (Bookworm/Trixie)</h4>
+                    <ul>
+                        <li>GCC 11 or higher</li>
+                        <li>CMake 3.18 or higher</li>
+                        <li>Standard C++17 development libraries</li>
+                    </ul>
+                    
+                    <h3>Dependencies</h3>
+                    <pre><code># Update system and install all dependencies
+sudo apt-get update && sudo apt-get install -y \
+    build-essential \
+    cmake \
+    pkg-config \
+    git \
+    g++ \
+    make \
+    libheif-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libwebp-dev \
+    libtiff-dev \
+    libheif1 \
+    libpng16-16 \
+    libjpeg-turbo8 \
+    libwebp7 \
+    libwebpdemux2 \
+    libwebpmux3 \
+    libtiff6 \
+    exiftool</code></pre>
+                    
+                    <h3>Build Instructions</h3>
+                    
+                    <h4>For Debian 12/13 Systems</h4>
+                    <pre><code># Clone the repository
+git clone https://github.com/R2Innovation/heic_converter
+cd heic_converter_v1.0
+
+# Run build script for Debian 12/13
+./scripts/build_debian12.sh
+
+# The executable will be in build/debian12/bin/</code></pre>
+                    
+                    <h4>For Debian 9 Systems</h4>
+                    <pre><code># Clone the repository
+git clone https://github.com/R2Innovation/heic_converter
+cd heic_converter_v1.0
+
+# Run build script for Debian 9
+./scripts/build_debian9.sh
+# The executable will be in build/debian9/bin/</code></pre>
+                    
+                    <h4>Manual Build (CMake)</h4>
+                    <pre><code>mkdir -p build && cd build
+cmake -DDEBIAN9_BUILD=ON .. # For Debian 9
+
+# or
+cmake -DDEBIAN12_BUILD=ON .. # For Debian 12/13
+make -j$(nproc)
+sudo make install # Optional</code></pre>
+                </section>
+            </div>
+
+            <!-- Usage Tab -->
+            <div class="tab-panel" id="tab-panel-usage">
+                <section>
+                    <h2>Usage Guide</h2>
+                    
+                    <h3>Basic Syntax</h3>
+                    <pre><code>heic_converter [options] &lt;input&gt; [output]</code></pre>
+                    
+                    <div class="command-examples">
+                        <h4>Command Examples</h4>
+                        
+                        <div class="command-item">
+                            <p class="command-description"><strong>Convert a single file:</strong></p>
+                            <pre><code>heic_converter image.heic
+heic_converter image.heic image.jpg
+heic_converter -f png image.heic</code></pre>
+                        </div>
+                        
+                        <div class="command-item">
+                            <p class="command-description"><strong>Convert with quality adjustment:</strong></p>
+                            <pre><code>heic_converter -q 90 image.heic
+heic_converter -c 9 image.heic # PNG compression</code></pre>
+                        </div>
+                        
+                        <div class="command-item">
+                            <p class="command-description"><strong>Batch conversion:</strong></p>
+                            <pre><code>heic_converter -r ./photos ./converted
+heic_converter -t 8 -r ./input_dir ./output_dir</code></pre>
+                        </div>
+                        
+                        <div class="command-item">
+                            <p class="command-description"><strong>Overwrite existing files:</strong></p>
+                            <pre><code>heic_converter -o image.heic image.jpg</code></pre>
+                        </div>
+                        
+                        <div class="command-item">
+                            <p class="command-description"><strong>Verbose output:</strong></p>
+                            <pre><code>heic_converter -v image.heic</code></pre>
+                        </div>
+                    </div>
+                    
+                    <h3>Command Line Options</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Description</th>
+                                <th>Default</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>-f, --format FORMAT</code></td>
+                                <td>Output format (jpg, png, bmp, tiff, webp)</td>
+                                <td>jpg</td>
+                            </tr>
+                            <tr>
+                                <td><code>-q, --quality N</code></td>
+                                <td>JPEG quality (1-100)</td>
+                                <td>85</td>
+                            </tr>
+                            <tr>
+                                <td><code>-c, --compression N</code></td>
+                                <td>PNG compression level (0-9)</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td><code>-t, --threads N</code></td>
+                                <td>Threads for batch processing</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td><code>-r, --recursive</code></td>
+                                <td>Process directories recursively</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td><code>-o, --overwrite</code></td>
+                                <td>Overwrite existing files</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td><code>-v, --verbose</code></td>
+                                <td>Enable verbose output</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td><code>--no-metadata</code></td>
+                                <td>Strip metadata from output</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td><code>-h, --help</code></td>
+                                <td>Show help message</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td><code>--version</code></td>
+                                <td>Show version information</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="warning-box">
+                        <strong>Performance Tips:</strong><br>
+                        • Use parallel processing for batch conversions: <code>-t 8</code><br>
+                        • Adjust quality settings for smaller file sizes<br>
+                        • Disable metadata if not needed: <code>--no-metadata</code><br>
+                        • Use appropriate format for your use case
+                    </div>
+                </section>
+            </div>
+
+            <!-- Documentation Tab -->
+            <div class="tab-panel" id="tab-panel-documentation">
+                <section>
+                    <h2>Documentation</h2>
+                    
+                    <h3>Troubleshooting</h3>
+                    
+                    <h4>Common Issues</h4>
+                    <div class="info-box">
+                        <p><strong>"Cannot open file" error:</strong></p>
+                        <ul>
+                            <li>Check file permissions</li>
+                            <li>Ensure the file is not corrupted</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <p><strong>"Unsupported format" error:</strong></p>
+                        <ul>
+                            <li>Verify the file has a .heic or .heif extension</li>
+                            <li>Try a different HEIC/HEIF file</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <p><strong>Memory issues with large files:</strong></p>
+                        <ul>
+                            <li>Reduce thread count: <code>-t 2</code></li>
+                            <li>Ensure sufficient system memory</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Error Codes</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>0</td><td>Success</td></tr>
+                            <tr><td>1</td><td>Invalid arguments</td></tr>
+                            <tr><td>2</td><td>Unsupported format</td></tr>
+                            <tr><td>3</td><td>File not found</td></tr>
+                            <tr><td>4</td><td>Read permission error</td></tr>
+                            <tr><td>5</td><td>Write permission error</td></tr>
+                            <tr><td>6</td><td>Decoding failed</td></tr>
+                            <tr><td>7</td><td>Encoding failed</td></tr>
+                            <tr><td>8</td><td>Memory allocation error</td></tr>
+                            <tr><td>9</td><td>Codec initialization error</td></tr>
+                            <tr><td>10</td><td>Batch processing error</td></tr>
+                            <tr><td>255</td><td>Unknown error</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Project Structure</h3>
+                    <pre><code>heic_converter_v1.0/
+├── data/                    # Embedded codecs
+│   ├── debian9/            # Codecs for Debian 9
+│   └── debian12/           # Codecs for Debian 12/13
+├── scripts/                # Build scripts
+├── include/                # Header files
+├── src/                    # Source files
+└── tests/                  # Test suite</code></pre>
+                    
+                    <h3>License</h3>
+                    <div class="info-box">
+                        <p>Software is licensed under GPLv3. See the LICENSE file for detailed licensing information.</p>
+                    </div>
+                    
+                    <h3>Support</h3>
+                    <p>For issues, questions, or feature requests:</p>
+                    <ul>
+                        <li>Check the troubleshooting section</li>
+                        <li>Review existing issues on GitHub</li>
+                        <li>Submit a new issue with detailed information</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+        
+        <!-- Download Options -->
+        <section id="download-section">
+            <h2>Download Options</h2>
+            <div class="download-options">
+                <div class="download-card">
+                    <span class="download-icon">🐧</span>
+                    <h3>Debian 12/13</h3>
+                    <p>Optimized for Bookworm/Trixie</p>
+                    <a href="https://github.com/R2Innovation/heic_converter/releases" class="btn btn-primary" target="_blank">Download</a>
+                </div>
+                <div class="download-card">
+                    <span class="download-icon">📦</span>
+                    <h3>Debian 9</h3>
+                    <p>Compatible with Stretch</p>
+                    <a href="https://github.com/R2Innovation/heic_converter/releases" class="btn btn-primary" target="_blank">Download</a>
+                </div>
+                <div class="download-card">
+                    <span class="download-icon">📚</span>
+                    <h3>Source Code</h3>
+                    <p>Build from source</p>
+                    <a href="https://github.com/R2Innovation/heic_converter" class="btn btn-secondary" target="_blank">View Source</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 R² Innovative Software | Free Software for a Free World</p>
+        <p class="footer-quote">"Where innovation is the key to success"</p>
+        <p class="github">
+            <a href="https://github.com/R2Innovation/" target="_blank"><img src="../../resources/github.png" alt="Github" tilte="Github"/></a>
+        </p>
+    </footer>
+
+    <script type="text/javascript" src="../../resources/js/main.js"></script>
+</body>
+</html>

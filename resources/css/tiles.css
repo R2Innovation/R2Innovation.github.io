@@ -1,0 +1,254 @@
+
+/* View All Tile Styles */
+.view-all-tile {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: 2px dashed var(--border-color);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-color) 100%);
+}
+
+.view-all-tile:hover {
+    border-color: var(--primary-color);
+    border-style: solid;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .view-all-tile:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.view-all-tile .project-logo {
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    font-size: 32px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.view-all-tile .project-title {
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+}
+
+.view-all-tile .project-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), transparent);
+    border-radius: 2px;
+}
+
+.view-all-tile .project-description {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.view-all-tile .project-features li {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.view-all-tile .project-features li::before {
+    content: '→';
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.view-all-link {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: var(--radius);
+    text-align: center;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-block;
+    width: auto;
+}
+
+.view-all-tile:hover .view-all-link {
+    background-color: var(--primary-dark);
+    transform: translateX(5px);
+}
+
+/* Add a subtle corner accent */
+.new::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 40px solid var(--primary-color);
+    border-left: 40px solid transparent;
+}
+
+.new::after {
+    content: 'NEW';
+    position: absolute;
+    top: 17px;
+    right: 0px;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    transform: rotate(45deg);
+    transform-origin: top right;
+}
+
+/* Add an orange corner accent for "in development" items */
+.in-dev::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 50px solid #f59e0b; /* Orange color */
+    border-left: 50px solid transparent;
+    z-index: 1;
+}
+
+.in-dev::after {
+    content: 'IN DEV';
+    position: absolute;
+    top: 27px;
+    right: -1px;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    transform: rotate(45deg);
+    transform-origin: top right;
+    z-index: 2;
+    letter-spacing: 0.5px;
+}
+
+/* Alternative with gradient orange */
+.in-dev-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 40px solid transparent;
+    border-left: 40px solid transparent;
+    background: linear-gradient(45deg, #f59e0b, #f97316);
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    z-index: 1;
+}
+
+.in-dev-gradient::after {
+    content: 'DEV';
+    position: absolute;
+    top: 6px;
+    right: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    transform: rotate(45deg);
+    transform-origin: top right;
+    z-index: 2;
+    letter-spacing: 1px;
+    text-shadow: 0 0 2px rgba(0,0,0,0.3);
+}
+
+/* Pulsing animation for in-development items */
+.in-dev-pulse::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 40px solid #f59e0b;
+    border-left: 40px solid transparent;
+    z-index: 1;
+    animation: pulse-orange 2s infinite;
+}
+
+.in-dev-pulse::after {
+    content: 'IN DEV';
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    transform: rotate(45deg);
+    transform-origin: top right;
+    z-index: 2;
+    letter-spacing: 0.5px;
+    animation: pulse-text 2s infinite;
+}
+
+@keyframes pulse-orange {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+@keyframes pulse-text {
+    0% { text-shadow: 0 0 0px rgba(255,255,255,0.5); }
+    50% { text-shadow: 0 0 3px rgba(255,255,255,0.8); }
+    100% { text-shadow: 0 0 0px rgba(255,255,255,0.5); }
+}
+
+/* With icon instead of text */
+.in-dev-icon::before {
+    content: '🔨';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 14px;
+    background: linear-gradient(45deg, #f59e0b, #ea580c);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Simple version for dark/light theme compatibility */
+.in-dev-simple::before {
+    content: 'IN DEVELOPMENT';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: linear-gradient(45deg, #f59e0b, #d97706);
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 0 0 0 4px;
+    z-index: 2;
+    letter-spacing: 0.5px;
+}
+
+.dark-theme .in-dev::before {
+    border-top-color: #fbbf24; /* Lighter orange for dark theme */
+}
+
+.dark-theme .in-dev::after {
+    color: #1f2937; /* Dark gray text for better contrast on lighter orange */
+    font-weight: 800;
+}
+
+.software-card, .project-card { position: relative; }
+

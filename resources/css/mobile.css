@@ -1,0 +1,122 @@
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    nav {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-color);
+        box-shadow: var(--shadow);
+        padding: 20px;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+    }
+    
+    nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    nav li {
+        width: 100%;
+    }
+    
+    nav a {
+        display: block;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .header-controls {
+        margin-left: auto;
+        margin-right: 12px;
+    }
+    
+    .search-input {
+        width: 160px;
+    }
+    
+    .search-input:focus {
+        width: 180px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    h2 {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-input {
+        display: none;
+    }
+    
+    .search-container.active .search-input {
+        display: block;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        width: 280px;
+    }
+    
+    .hero {
+        padding: 40px 20px;
+    }
+}
+
+/* Mobile Responsiveness for Tabs */
+@media (max-width: 768px) {
+    .tabs {
+        flex-direction: column;
+        border-bottom: none;
+    }
+    
+    .tab {
+        padding: 12px 20px;
+        border-bottom: 1px solid var(--border-color);
+        border-left: 3px solid transparent;
+        width: 100%;
+    }
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .tabs {
+        flex-direction: column;
+        border-bottom: none;
+        border-left: 1px solid var(--border-color);
+    }
+    
+    .tab-label {
+        padding: 12px 20px;
+        border-bottom: none;
+        border-left: 3px solid transparent;
+        text-align: left;
+    }
+    
+    .tab-input:checked + .tab-label {
+        border-bottom: none;
+        border-left-color: var(--primary-color);
+    }
+}
+

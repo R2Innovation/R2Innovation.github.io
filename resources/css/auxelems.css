@@ -1,0 +1,112 @@
+/* Code Blocks */
+pre {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 20px;
+    overflow-x: auto;
+    margin: 20px 0;
+    font-family: monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+code {
+    background-color: var(--bg-secondary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: var(--bg-secondary);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.dark-theme tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Lists */
+ul, ol {
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+    line-height: 1.7;
+}
+
+/* Warning/Info Boxes */
+.info-box {
+    background-color: rgba(37, 99, 235, 0.1);
+    border-left: 4px solid var(--primary-color);
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.warning-box {
+    background-color: rgba(245, 158, 11, 0.1);
+    border-left: 4px solid #f59e0b;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.success-box {
+    background-color: rgba(16, 185, 129, 0.1);
+    border-left: 4px solid #10b981;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+/* Command Examples */
+.command-examples {
+    background-color: var(--bg-secondary);
+    border-radius: var(--radius);
+    padding: 25px;
+    margin: 30px 0;
+    border: 1px solid var(--border-color);
+}
+
+.command-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.command-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.command-description {
+    margin-bottom: 10px;
+    color: var(--text-color);
+}

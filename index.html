@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R² Innovative Software - Where Innovation is the Key to Success</title>
+    <link rel="icon" href="resources/logo.png">
+    <link rel='stylesheet' type='text/css' href='resources/css/main.css'/>
+    <link rel="shortcut icon" id="shortcutIcon" href="resources/logo.png" type="image/png" />
+    <style>
+    /* Section Styles */
+        section {
+            margin-bottom: 60px;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            color: var(--text-color);
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .section-content {
+            background-color: var(--bg-secondary);
+            padding: 32px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+        
+        .project-card {
+            background-color: var(--bg-color);
+            position: relative;
+            border-radius: var(--radius);
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .project-logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--text-color);
+        }
+        
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+        
+        .project-features {
+            list-style-position: inside;
+            margin-top: 16px;
+        }
+        
+        .project-features li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+        
+        /* License Section */
+        .license-box {
+            background-color: var(--bg-color);
+            border-radius: var(--radius);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            margin-top: 20px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 24px;
+        }
+        
+        .contact-item {
+            flex: 1;
+            min-width: 200px;
+            background-color: var(--bg-color);
+            padding: 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo"><img src="resources/logo.png" alt="Logo" title="Logo"></div>
+                <div class="logo-text">
+                    <div class="org-name">R² Innovative Software</div>
+                    <div class="org-tagline">Where Innovation is the Key to Success</div>
+                </div>
+            </div>
+            
+            <!-- Navigation -->
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="software/">Software & Projects</a></li>
+                    <li><a href="mission.html">Mission</a></li>
+                    <li><a href="#license">License</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Header Controls -->
+            <div class="header-controls">
+                <!-- Search -->
+                <div class="search-container" id="search-container">
+                    <div class="search-icon">🔍</div>
+                    <input type="text" class="search-input" id="search-input" placeholder="Search...">
+                </div>
+                
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <svg class="moon-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg class="sun-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Where Innovation is the Key to Success</h1>
+            <p>Welcome to the R² Innovative Software website! We are dedicated to developing powerful, open-source alternatives to proprietary software and exploring cutting-edge experimental applications. All our projects are released under the GNU General Public License v3.0, ensuring software freedom for all users.</p>
+        </section>
+        
+        <!-- Mission Section -->
+        <section id="mission">
+            <h2>🚀 Our Mission</h2>
+            <div class="section-content">
+                <p>We believe in democratizing access to essential software tools by providing free, open-source alternatives to expensive proprietary solutions. Simultaneously, we push the boundaries of software innovation through experimental projects that explore new paradigms and technologies.</p>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>📦 Current Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card in-dev" data-searchable="QuantilyxDoc document manipulation PDF editing conversion form creation digital signature batch processing">
+                    <div class="project-logo">QD</div>
+                    <h3 class="project-title">QuantilyxDoc</h3>
+                    <p class="project-description">QuantilyxDoc is a feature-rich document manipulation suite designed to replace proprietary PDF software. It offers advanced PDF editing, conversion, form creation, and secure document management—all within a libre software framework.</p>
+                    <ul class="project-features">
+                        <li>PDF creation and editing</li>
+                        <li>Advanced form tools</li>
+                        <li>Document conversion (multiple formats)</li>
+                        <li>Digital signature support</li>
+                        <li>Batch processing capabilities</li>
+                    </ul>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card" data-searchable="heic converter HEIC HEIF image conversion JPEG PNG batch conversion lossless quality cross-platform">
+                    <div class="project-logo">HC</div>
+                    <h3 class="project-title">heic_converter</h3>
+                    <p class="project-description">A lightweight, efficient tool for converting Apple's HEIC/HEIF image format to more widely compatible formats like JPEG and PNG. Perfect for users transitioning between ecosystems or needing to share images across platforms.</p>
+                    <ul class="project-features">
+                        <li>Batch conversion support</li>
+                        <li>Lossless quality options</li>
+                        <li>Minimal resource usage</li>
+                        <li>Cross-platform compatibility</li>
+                    </ul>
+                </div>
+                
+                <!-- View All Software Tile -->
+               <div class="project-card view-all-tile" onclick="window.location.href='software/'">
+                    <div class="project-logo">→</div>
+                    <h3 class="project-title">View All Software</h3>
+                    <p class="project-description">Explore our complete collection of open-source software solutions. All projects are released under GPLv3.</p>
+                    <ul class="project-features">
+                    </ul>
+                    <div class="view-all-link"><a href="software/" style="color:unset;">Browse all software →</a></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- License Section -->
+        <section id="license">
+            <h2>📜 License</h2>
+            <div class="section-content">
+                <p>All software developed by R² Innovative Software is released under the GNU General Public License v3.0. This ensures that our software remains free and open-source, giving users the freedom to use, study, modify, and distribute it.</p>
+                <div class="license-box">
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</div>
+            </div>
+        </section>
+        
+        <!-- Contributing Section -->
+        <section id="contributing">
+            <h2>🤝 Contributing</h2>
+            <div class="section-content">
+                <p>We welcome contributions from developers, designers, testers, and documentation writers! Whether you're fixing bugs, adding features, or improving documentation, your help drives our mission forward.</p>
+                <p><strong>Getting Started:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Check the CONTRIBUTING.md file in individual repositories</li>
+                    <li>Fork the repository</li>
+                    <li>Create a feature branch</li>
+                    <li>Submit a pull request</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>📞 Contact & Support</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Organization Issues</h3>
+                    <p>For general inquiries about R² Innovative Software</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Repository Issues</h3>
+                    <p>For project-specific bugs and feature requests</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Discussion Forums</h3>
+                    <p>Coming soon for community collaboration</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Future Vision -->
+        <section id="future">
+            <h2>🌟 Future Vision</h2>
+            <div class="section-content">
+                <p>We're continuously exploring new domains where proprietary software dominates, seeking to create libre alternatives. Our roadmap includes experimental projects in quantum computing simulations, alternative office suites, and next-generation media tools.</p>
+                <p class="footer-quote">"Where innovation is the key to success"</p>
+            </div>
+        </section>
+        
+        <!-- No Search Results Message -->
+        <div class="no-results" id="no-results">
+            <p>No results found for your search. Try different keywords.</p>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 R² Innovative Software | Free Software for a Free World</p>
+        <p class="footer-quote">"Where innovation is the key to success"</p>
+        <p class="github">
+            <a href="https://github.com/R2Innovation/" target="_blank"><img src="../../resources/github.png" alt="Github" tilte="Github"/></a>
+        </p>
+    </footer>
+
+    <script type="text/javascript" src="../resources/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+@import url('mobile.css');
+@import url('content.css');
+@import url('section.software.css');
+
+@import url('header.css');
+@import url('header.controls.css');
+@import url('footer.css');
+
+@import url('navigation.css');
+@import url('menu.css');
+@import url('theme-toggle.css');
+@import url('search.css');
+@import url('stats.css');
+@import url('hero.css');
+@import url('tiles.css');
+
+@import url('software-pages.css');
+@import url('download.css');
+@import url('auxelems.css');
+
+
+/* CSS Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Light theme variables */
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary-color: #0ea5e9;
+    --bg-color: #ffffff;
+    --bg-secondary: #f8fafc;
+    --text-color: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: #e2e8f0;
+    --header-height: 70px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+/* Dark theme variables */
+.dark-theme {
+    --primary-color: #3b82f6;
+    --primary-dark: #60a5fa;
+    --secondary-color: #0ea5e9;
+    --bg-color: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-color: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+
+a.btn-primary:hover { color:#fff !important; }
+

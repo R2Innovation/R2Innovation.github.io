@@ -1,0 +1,86 @@
+/* Content Sections */
+section {
+    margin-bottom: 60px;
+}
+
+h2 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: var(--text-color);
+    position: relative;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+h3 {
+    font-size: 1.6rem;
+    margin: 30px 0 20px;
+    color: var(--text-color);
+}
+
+h4 {
+    font-size: 1.3rem;
+    margin: 25px 0 15px;
+    color: var(--text-color);
+}
+
+p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+
+/* Pure CSS Tab System */
+.tab-container {
+    margin-bottom: 40px;
+}
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Hide radio buttons */
+.tab-input {
+    display: none;
+}
+
+/* Style labels as tabs */
+.tab-label {
+    padding: 15px 25px;
+    cursor: pointer;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: var(--transition);
+    color: var(--text-color);
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.tab-label:hover {
+    color: var(--primary-color);
+}
+
+/* Tab content */
+.tab-panel {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Make sure tab panels are stacked in order */
+.tab-container {
+    position: relative;
+}
+
+.tab-panel {
+    width: 100%;
+}
+

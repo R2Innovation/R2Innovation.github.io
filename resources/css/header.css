@@ -1,0 +1,64 @@
+/* Header Styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--bg-color);
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    transition: var(--transition);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.logo > img {
+    width: 64px;
+    height: 64px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.org-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-color);
+    line-height: 1.2;
+}
+
+.org-tagline {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
